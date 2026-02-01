@@ -85,14 +85,49 @@ code {
   border-radius: 10px;
 }
 
-pre {
-  border: 1px solid rgba(255,255,255,0.06);
+.highlighter-rouge,
+div.highlight,
+figure.highlight,
+.highlight {
   background: rgba(7,10,18,0.78);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
 }
 
-code {
-  background: rgba(7,10,18,0.55);
+.highlighter-rouge pre,
+div.highlight pre,
+figure.highlight pre,
+.highlight pre,
+pre.highlight {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  overflow: auto;
 }
+
+.main-content code,
+.main-content p code,
+.main-content li code,
+.main-content td code {
+  background: rgba(7,10,18,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.08em 0.42em;
+  border-radius: 8px;
+}
+
+.main-content pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.highlight .rouge-gutter,
+.highlight .rouge-code {
+  background: transparent;
+}
+
 
 a {
   text-decoration-thickness: 1px;
