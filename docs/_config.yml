@@ -1,7 +1,19 @@
 title: Immersive Performance Panel — LITE
-description: Lightweight NUI performance panel for FiveM
+description: Lightweight, NUI-first performance panel for FiveM by Immersive RP
 remote_theme: just-the-docs/just-the-docs
+
+url: https://immersive-rp.github.io
+baseurl: /immersive-performance-panel-lite
+
 search_enabled: true
 heading_anchors: true
-color_scheme: dark
+color_scheme: immersive
+
+logo: /assets/images/immersive-rp-mark.png
+favicon_ico: /assets/images/favicon.ico
+
+aux_links:
+  "GitHub Repository":
+    - https://github.com/Immersive-RP/immersive-performance-panel-lite
+
 footer_content: "© 2026 Immersive RP. Released under the MIT License."
