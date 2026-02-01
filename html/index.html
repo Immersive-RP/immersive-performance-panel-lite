@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Immersive Performance Panel - LITE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>body{display:none;}</style>
+  </head>
+  <body>
+    <div id="overlay" class="ippOverlay">
+      <div id="panel" class="ippPanel" role="dialog" aria-modal="true" aria-label="Immersive Performance Panel">
+        <header class="ippHeader">
+          <div id="fpsChip" class="ippFps">FPS</div>
+          <div class="ippTitle">Immersive Performance Panel — <span class="ippTier ippTierLite">LITE</span></div>
+          <div class="ippActions">
+            <button id="closeBtn" class="ippBtn ippBtnIcon" type="button" aria-label="Close">✕</button>
+          </div>
+        </header>
+
+        <div class="ippColsLite" aria-label="Controls">
+          <div class="ippItem" aria-label="Density and Distance">
+            <div class="ippSectionTitle">Density &amp; Distance</div>
+
+            <div class="ippRow ippRowSlider">
+              <div class="ippText">
+                <div class="ippLabel">Ped Density</div>
+                <div class="ippHelp">Fewer pedestrians · City/Events</div>
+              </div>
+              <div class="ippCtrl ippCtrlSlider">
+                <input id="pedDensity" class="ippRange" type="range" min="0" max="100" step="1" value="100">
+              </div>
+              <div id="pedDensityVal" class="ippVal">100%</div>
+            </div>
+
+            <div class="ippRow ippRowSlider">
+              <div class="ippText">
+                <div class="ippLabel">Scenario Density</div>
+                <div class="ippHelp">Less background activity · Downtown</div>
+              </div>
+              <div class="ippCtrl ippCtrlSlider">
+                <input id="scenarioDensity" class="ippRange" type="range" min="0" max="100" step="1" value="100">
+              </div>
+              <div id="scenarioDensityVal" class="ippVal">100%</div>
+            </div>
+
+            <div class="ippRow ippRowSlider">
+              <div class="ippText">
+                <div class="ippLabel">LOD Distance</div>
+                <div class="ippHelp">More pop-in at lower values · City/Events</div>
+              </div>
+              <div class="ippCtrl ippCtrlSlider">
+                <input id="lodScale" class="ippRange" type="range" min="10" max="100" step="1" value="100">
+              </div>
+              <div id="lodScaleVal" class="ippVal">100%</div>
+            </div>
+          </div>
+
+          <div class="ippItem" aria-label="Visual Toggles">
+            <div class="ippSectionTitle">Visual Toggles</div>
+
+            <div class="ippRow ippRowToggle">
+              <div class="ippText">
+                <div class="ippLabel">Decals</div>
+                <div class="ippHelp">Fewer marks · Events</div>
+              </div>
+              <div class="ippCtrl ippCtrlToggle">
+                <label class="ippSwitch">
+                  <input id="disableDecals" type="checkbox">
+                  <span class="ippSwitchUi"></span>
+                </label>
+              </div>
+              <div class="ippVal ippValEmpty"></div>
+            </div>
+
+            <div class="ippRow ippRowToggle">
+              <div class="ippText">
+                <div class="ippLabel">Screen Blur</div>
+                <div class="ippHelp">Cleaner UI · Always</div>
+              </div>
+              <div class="ippCtrl ippCtrlToggle">
+                <label class="ippSwitch">
+                  <input id="disableScreenBlur" type="checkbox">
+                  <span class="ippSwitchUi"></span>
+                </label>
+              </div>
+              <div class="ippVal ippValEmpty"></div>
+            </div>
+
+            <div class="ippRow ippRowToggle">
+              <div class="ippText">
+                <div class="ippLabel ippLabelInfo">
+                  <span>Artificial Lights</span>
+                  <button class="ippInfoBtn" type="button" aria-label="About Artificial Lights" data-tip="Global lighting state. May conflict with other scripts that modify lighting.">i</button>
+                </div>
+                <div class="ippHelp">Global lighting state · May conflict</div>
+              </div>
+              <div class="ippCtrl ippCtrlToggle">
+                <label class="ippSwitch">
+                  <input id="artificialLightsOff" type="checkbox">
+                  <span class="ippSwitchUi"></span>
+                </label>
+              </div>
+              <div class="ippVal ippValEmpty"></div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="ippFooter">
+          <button id="restoreBtn" class="ippBtn ippBtnPrimary" type="button">Reset</button>
+        </footer>
+
+        <div class="ippSignature" aria-hidden="true">Powered By <span>Immersive</span></div>
+        <div id="ippTooltip" class="ippTooltip" role="tooltip" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

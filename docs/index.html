@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05060a" />
+  <title>Performance Panel — LITE</title>
+  <meta name="description" content="A tiny, player-side NUI panel for stabilizing FPS in crowded scenes." />
+  <link rel="preload" as="image" href="assets/powered-by-immersive.png" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="nav">
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>Performance Panel — LITE</strong><br />
+            <span>Client-side tuning, instantly.</span>
+          </div>
+        </div>
+
+        <div class="links" aria-label="Sections">
+          <a class="link" href="#start" data-target="start">Start</a>
+          <a class="link" href="#controls" data-target="controls">Controls</a>
+          <a class="link" href="#tuning" data-target="tuning">Tuning</a>
+          <a class="link" href="#map" data-target="map">Flow</a>
+          <a class="link" href="#faq" data-target="faq">FAQ</a>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="../README.md">README</a>
+          <a class="btn primary" href="#start" data-target="start">Get set</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero" id="top">
+      <div class="inner">
+        <div class="heroTop">
+          <div class="heroImg">
+            <div class="shine" aria-hidden="true"></div>
+            <img src="assets/powered-by-immersive.png" alt="Powered by Immersive" />
+          </div>
+
+          <div class="heroCopy">
+            <h1 class="h1">Make performance feel effortless.</h1>
+            <p class="sub">
+              A minimal NUI panel with a few big levers: density, scenarios, LOD distance, and three visual toggles.
+              Dial it in once — it restores on next session.
+            </p>
+
+            <div class="badges">
+              <div class="badge">FiveM</div>
+              <div class="badge">NUI</div>
+              <div class="badge">client-only</div>
+              <div class="badge">MIT</div>
+            </div>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#start" data-target="start">Start in 60 seconds</a>
+              <a class="btn" href="#tuning" data-target="tuning">See the dials</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="start">
+      <div class="grid">
+        <div class="card">
+          <div class="kicker">
+            <h2>Start in 60 seconds</h2>
+            <span>drop → ensure → press F10</span>
+          </div>
+          <p class="p">
+            This is a single resource. No framework hooks. No shared state. Just a clean panel that applies a handful of settings.
+          </p>
+
+          <ol class="list">
+            <li>Place the folder into your <b>resources</b> directory.</li>
+            <li>Ensure it starts on launch.</li>
+            <li>In-game: press <b>F10</b> to open the panel.</li>
+          </ol>
+
+          <div class="code">
+            <button class="copy" type="button" data-copy="#cfg" aria-label="Copy">Copy</button>
+            <pre id="cfg"><code>ensure Immersive_Performance_Panel-LITE</code></pre>
+          </div>
+
+          <div class="pills">
+            <div class="pill"><b>Persistence</b> Stored client-side using resource KVP keys.</div>
+            <div class="pill"><b>Safe defaults</b> All values are clamped.</div>
+            <div class="pill"><b>Instant</b> Changes apply right away.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="kicker">
+            <h2>What it touches</h2>
+            <span>only the big levers</span>
+          </div>
+          <p class="p">You get three sliders and a few switches — nothing hidden.</p>
+          <ul class="list">
+            <li>Ped density multiplier</li>
+            <li>Scenario density multiplier</li>
+            <li>LOD distance scale</li>
+            <li>Decals (per-frame)</li>
+            <li>Screen blur</li>
+            <li>Artificial lights</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="controls">
+      <div class="card">
+        <div class="kicker">
+          <h2>Controls</h2>
+          <span>simple on purpose</span>
+        </div>
+
+        <table class="table" role="table" aria-label="Controls">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Open / Close panel</td>
+              <td><b>F10</b> (rebindable via keybind settings)</td>
+            </tr>
+            <tr>
+              <td>Close panel</td>
+              <td><b>Esc</b> or the <b>✕</b> button</td>
+            </tr>
+            <tr>
+              <td>Reset values</td>
+              <td><b>Reset</b> button</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="tuning">
+      <div class="grid">
+        <div class="card">
+          <div class="kicker">
+            <h2>Tuning dials</h2>
+            <span>fast to reason about</span>
+          </div>
+
+          <p class="p">
+            Each option maps to a native call. No surprises — just clear cause and effect.
+          </p>
+
+          <ul class="list">
+            <li><b>Ped Density</b> → <code>SetPedDensityMultiplierThisFrame</code></li>
+            <li><b>Scenario Density</b> → <code>SetScenarioPedDensityMultiplierThisFrame</code></li>
+            <li><b>LOD Distance</b> → <code>SetLodScale</code> (clamped to <code>0.1–1.0</code>)</li>
+            <li><b>Decals</b> → <code>SetDisableDecalRenderingThisFrame</code></li>
+            <li><b>Screen Blur</b> → <code>SetDisableScreenBlur</code></li>
+            <li><b>Artificial Lights</b> → <code>SetArtificialLightsState</code> (global state)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="kicker">
+            <h2>Notes</h2>
+            <span>keep it predictable</span>
+          </div>
+          <ul class="list">
+            <li><b>Artificial lights</b> is global — if another resource manages lighting, whichever runs last wins.</li>
+            <li>Density/scenario multipliers are applied only while the panel is open; saved values restore on start.</li>
+            <li>Values are written on change; no extra menus, no extra layers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="map">
+      <div class="card">
+        <div class="kicker">
+          <h2>Flow</h2>
+          <span>mental model</span>
+        </div>
+
+        <p class="p">
+          Here’s the signal path when you interact with the panel.
+        </p>
+
+        <div class="map" role="group" aria-label="Flow diagram">
+          <div class="node">
+            <div class="l"><span class="ic" aria-hidden="true"></span><span class="t">F10</span></div>
+            <span class="d">Open / close</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="node">
+            <div class="l"><span class="ic" aria-hidden="true"></span><span class="t">NUI panel</span></div>
+            <span class="d">Sliders / toggles</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="node">
+            <div class="l"><span class="ic" aria-hidden="true"></span><span class="t">client.lua</span></div>
+            <span class="d">Apply + persist</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="node">
+            <div class="l"><span class="ic" aria-hidden="true"></span><span class="t">Resource KVP</span></div>
+            <span class="d">Remember values</span>
+          </div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="node">
+            <div class="l"><span class="ic" aria-hidden="true"></span><span class="t">GTA natives</span></div>
+            <span class="d">Render + density</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="card">
+        <div class="kicker">
+          <h2>FAQ</h2>
+          <span>quick fixes</span>
+        </div>
+
+        <details>
+          <summary>The panel won’t open</summary>
+          <p>
+            Confirm the resource started successfully. Rebind the key in keybind settings and test again.
+            If it still won’t open, check the in-game console for NUI errors.
+          </p>
+        </details>
+
+        <details>
+          <summary>Values don’t persist</summary>
+          <p>
+            Persistence uses client-side resource KVP keys. Change a value, close the panel, reopen it, and confirm it stuck.
+          </p>
+        </details>
+
+        <details>
+          <summary>Artificial lights behave oddly</summary>
+          <p>
+            That toggle is a global lighting state. If something else also manages lighting, leave this off to avoid conflicts.
+          </p>
+        </details>
+
+        <div style="height:14px"></div>
+
+        <div class="kicker" id="license">
+          <h2>License</h2>
+          <span>MIT</span>
+        </div>
+        <p class="p">MIT — see <code>LICENSE</code> in the repository.</p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>Powered by Immersive</div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
